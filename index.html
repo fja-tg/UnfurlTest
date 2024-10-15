@@ -4,20 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>The Open Graph protocol</title>
+  <title>Dynamic Open Graph Tags</title>
   
-  <!-- Open Graph meta tags -->
-  <meta property="og:title" content="Discover your well-being identity!" />
+  <!-- Open Graph meta tags with placeholders -->
+  <meta property="og:title" content="Discover your well-being identity!" id="og-title" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="http://ogp.me/" />
   <meta property="og:image" content="https://image.thriveglobal.com/ZW5qPb0CCPvz30zZFLgJ2w/adcc851b-7906-411d-576f-66b239f91300/cms" />
-  <meta property="og:description" content="Are you a Culinary Connoisseur, a Movement Maestro, or something else? Discover your superpower by taking your assessment here." />
+  <meta property="og:description" content="Are you a Culinary Connoisseur, a Movement Maestro, or something else? Discover your superpower by taking your assessment here." id="og-description" />
   <meta property="og:site_name" content="Thrive Global" />
+  
+  <script>
+    // Function to get query parameters
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
 
+    // Update meta tags dynamically based on query parameters
+    function updateMetaTags() {
+      const titleParam = getQueryParam('title');
+      const descriptionParam = getQueryParam('description');
+
+      // If title query param is provided, update the og:title meta tag
+      if (titleParam) {
+        const ogTitle = document.getElementById('og-title');
+        ogTitle.setAttribute('content', titleParam);
+        document.title = titleParam;  // Update the page title as well
+      }
+
+      // If description query param is provided, update the og:description meta tag
+      if (descriptionParam) {
+        const ogDescription = document.getElementById('og-description');
+        ogDescription.setAttribute('content', descriptionParam);
+      }
+    }
+
+    // Run the function when the page loads
+    window.onload = updateMetaTags;
+  </script>
 </head>
 <body>
   <h1>Thrive Global</h1>
   <p>This is a simple webpage to demonstrate how Open Graph meta tags work.</p>
   <img src="https://image.thriveglobal.com/ZW5qPb0CCPvz30zZFLgJ2w/adcc851b-7906-411d-576f-66b239f91300/cms" alt="Thrive Logo" width="200" />
+
+  <p id="dynamicContent">Open Graph title and description will change based on query parameters.</p>
 </body>
 </html>
