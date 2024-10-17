@@ -1,22 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>The Open Graph protocol</title>
-  
-  <!-- Open Graph meta tags -->
-  <meta property="og:title" content="Discover your well-being identity!" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="http://ogp.me/" />
-  <meta property="og:image" content="https://image.thriveglobal.com/ZW5qPb0CCPvz30zZFLgJ2w/adcc851b-7906-411d-576f-66b239f91300/cms" />
-  <meta property="og:description" content="Are you a Culinary Connoisseur, a Movement Maestro, or something else? Discover your superpower by taking your assessment here." />
-  <meta property="og:site_name" content="Thrive Global" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Thrive Global</title>
+
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Discover your well-being identity!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://app.thriveglobal.com" />
+    <meta property="og:image"
+        content="https://image.thriveglobal.com/ZW5qPb0CCPvz30zZFLgJ2w/adcc851b-7906-411d-576f-66b239f91300/cms" />
+    <meta property="og:description"
+        content="Are you a Culinary Connoisseur, a Movement Maestro, or something else? Discover your superpower by taking your assessment here." />
+    <meta property="og:site_name" content="Thrive Global" />
 </head>
+
+<style>
+    @import url('https://fonts.cdnfonts.com/css/gt-america-trial');
+
+    body {
+        background-color: rgb(212, 210, 238);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    #container {
+        gap: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    #container h3 {
+        font-family: 'GT America Trial';
+        font-size: 20px;
+        font-weight: 500;
+        color: rgb(23, 34, 53);
+    }
+
+    #container a {
+        font-family: 'GT America Trial';
+        font-size: 16px;
+        color: rgb(23, 34, 53);
+        text-decoration: none;
+    }
+</style>
+
 <body>
-  <h1>Thrive Global</h1>
-  <p>This is a simple webpage to demonstrate how Open Graph meta tags work.</p>
-  <img src="https://image.thriveglobal.com/ZW5qPb0CCPvz30zZFLgJ2w/adcc851b-7906-411d-576f-66b239f91300/cms" alt="Thrive Logo" width="200" />
+    <div id="container">
+        <img src="https://cdn.prod.website-files.com/62a8d80d50e8142f365d1ba7/63a086996cc40121e665dc6a_Thrive%20Logotype-Light-NoClip.svg"
+            alt="Thrive Logo" width="200" />
+        <h3 id="countdown-text">
+            Redirecting you to Thrive Global in 3...
+        </h3>
+        <p id="fallback-text">
+            If you are not redirected, please
+            <a href="https://app.thriveglobal.com/journeys">click here</a>.
+        </p>
+    </div>
+
+    <script>
+        // Initialize the countdown number
+        let countdown = 3
+
+        // Update the countdown text every second
+        const countdownInterval = setInterval(() => {
+            countdown--
+            if (countdown > 0) {
+                document.getElementById(
+                    'countdown-text'
+                ).innerText = `Redirecting you to Thrive Global in ${countdown}...`
+            } else {
+                // Once countdown reaches 1, update the text without the "in 1"
+                document.getElementById('countdown-text').innerText =
+                    'Redirecting you to Thrive Global...'
+                clearInterval(countdownInterval) // Stop the interval
+            }
+        }, 1000)
+
+        // Redirect after 3 seconds
+        setTimeout(function () {
+            window.location.href = 'https://app.thriveglobal.com/journeys'
+        }, 3000)
+    </script>
 </body>
+
 </html>
